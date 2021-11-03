@@ -1,0 +1,1 @@
+global directory "C:\Users\isaac\Dropbox\repos\division_cdmx"
