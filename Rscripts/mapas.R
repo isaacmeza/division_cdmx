@@ -7,7 +7,7 @@ library(taRifx)
 setwd("C:/Users/isaac/Dropbox/repos/division_cdmx")
 
 
-poligonos <- st_read(paste(inpMapas, './shp/CP_09CdMx_v7.shp', sep='/'), stringsAsFactors = F) %>%
+poligonos <- st_read('./shp/CP_09CdMx_v7.shp', stringsAsFactors = F) %>%
   rename(cp = d_cp)
 
 regiones <- read.csv('./tabla_dinamica.csv') 
@@ -16,7 +16,7 @@ regiones$cp[nchar(regiones$cp)==4] <- paste("0" , regiones$cp[nchar(regiones$cp)
 
 
 
-listas_regiones <- list(c(0,3,22,24,25))
+listas_regiones <- list(c(2,13,12))
 
 for (i in c(1:length(listas_regiones))){
   regionesMapa <- listas_regiones[[i]]
@@ -50,8 +50,8 @@ regiones_tuning$cp[nchar(regiones_tuning$cp)==4] <- paste("0" , regiones_tuning$
 regiones_tuning$new_region <- destring(regiones_tuning$new_region_tuning)
 
 
-for (r in c(1:25)) {
-  listas_regiones <- list(c(0,r))
+
+listas_regiones <- list(c(4,17,23,24))
   
 for (i in c(1:length(listas_regiones))){
   regionesMapa <- listas_regiones[[i]]
@@ -72,6 +72,5 @@ for (i in c(1:length(listas_regiones))){
     geom_sf(data=pol, aes(fill = division))  +
     geom_text(data=cps, aes(x=X, y=Y, label=cp), size=0.5)
   
-  ggsave(paste0('./mapas/Region_final_',eval(total),'-',eval(min),'.pdf'), mapa, device='pdf')
-}
+  ggsave(paste0('./mapas/Region_adj_',eval(total),'-',eval(min),'.pdf'), mapa, device='pdf')
 }
