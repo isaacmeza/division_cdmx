@@ -1,5 +1,7 @@
 # Division of Mexico City in 25 regions
 
+---
+
 The objective is to have a \emph{fair} division of 1255 zip-codes into 25 regions, with the property of being connected and disjoint. Our definition of a \emph{fair} division is one which achieves balance across regions in (i) number of notifications, (ii) number of addresses to be notified, and (iii) area covered. Heuristically, we proceed by joining together zip-codes while maintaining balance in the latter variables, and satisfying the constraints that such regions be connected and disjoint. Formally, we solve the following problem. 
 
 $$\begin{align}
@@ -18,3 +20,30 @@ where $\tilde{z(\cdot)}$ indicates standardization of variable $(\cdot)$.} such 
 Lastly, the objective function (1) seeks to minimize the accumulated difference between different regions. When the objective function is zero, we achieve perfect balance. 
 
 This problem is easily reformulated as a MILP (Mixed-Integer-Linear-Program), we use MATLAB's \texttt{intlinprog} function to look for an (approximate) solution. Finally, we make minor manual adjustments considering the geographical constraints (such as principal avenues and highways) to ensure the regions be connected and get more straightforward notifications routes.  
+
+---
+---
+
+# Power simulation 
+
+
+We have $r=1,\ldots, 25$, $\operatorname{Poisson}(\mu_r)$, number of cases per each day-region to be loaded for notification. Each casefile itself has a $\operatorname{Poisson}(\mu_d)$ number of defendants. Hence, the number of `diligencias' per working day follows a compound Poisson distribution : $\sum^{\sum_{r} \operatorname{Poisson}(\mu_r)} \operatorname{Poisson}(\mu_d)$. 
+
+Casefiles are assigned randomly (with probability $p_{treat}$) within regions to the treatment arm. 
+
+Baseline probability, $p_{baseline}$, of successful notification follows a $\operatorname{Beta}(a,b)$ distribution, with parameters calibrated such that $\mathbb{E}[p_{baseline}]=\frac{a}{a+b}$ , and $\operatorname{V}[p_{baseline}]=\frac{ab}{(a+b)^2(a+b+1)}$. 
+
+Moreover, each casefile has associated a region $r$, which has a differential fixed effect of $\bar{\alpha_r}$, and a notifier $n$ which has a differential fixed effect of $\bar{\gamma_n}$. 
+
+Assignment to treatment (ATT) has a (random) treatment effect that is normally distributed $N(\mu_\beta,\sigma^2_{\beta})$. \\
+
+In sum, the model for the DGP is 
+
+$$Y_i = \mathds{1}( U[0,1]_i < \operatorname{Beta}(a,b)_i + \bar{\alpha_r} + \bar{\gamma_n} + N(\mu_\beta,\sigma^2_{\beta})_i\mathds{1}(i \text{ is Rotator}) )$$
+and we estimate it using the following specification
+$$Y_{i} = \alpha_{r}  + \beta \mathds{1}(i \text{ is Rotator}) + \epsilon_{i}$$
+clustering standard errors at the region level.
+
+
+![Power simulation](http://url/to/img.png)
+
