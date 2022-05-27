@@ -46,5 +46,5 @@ $$Y_{i} = \alpha_{r}  + \beta \mathds{1}(i \text{Rotator}) + \epsilon_{i}$$
 clustering standard errors at the region level.
 
 
-![Power simulation](https://raw.githubusercontent.com/isaacmeza/division_cdmx/main/pwr_sim_graph_1.pdf)
+![Power simulation](https://raw.githubusercontent.com/isaacmeza/division_cdmx/main/pwr_sim_graph_1.PNG)
 
