@@ -40,11 +40,11 @@ Assignment to treatment (ATT) has a (random) treatment effect that is normally d
 
 In sum, the model for the DGP is 
 
-$$Y_i = \mathds{1}( U[0,1]_i < \operatorname{Beta}(a,b)_i + \bar{\alpha_r} + \bar{\gamma_n} + N(\mu_\beta,\sigma^2_{\beta})_i\mathds{1}(i \text{ is Rotator}) )$$
+$$Y_i = 1(U[0,1]_i < \operatorname{Beta}(a,b)_i + \bar{\alpha_r} + \bar{\gamma_n} + N(\mu_\beta,\sigma^2_{\beta})_i\mathds{1}(i \text{ is Rotator}))$$
 and we estimate it using the following specification
-$$Y_{i} = \alpha_{r}  + \beta \mathds{1}(i \text{ is Rotator}) + \epsilon_{i}$$
+$$Y_{i} = \alpha_{r}  + \beta \mathds{1}(i \text{Rotator}) + \epsilon_{i}$$
 clustering standard errors at the region level.
 
 
-![Power simulation](http://url/to/img.png)
+![Power simulation](https://raw.githubusercontent.com/isaacmeza/division_cdmx/main/pwr_sim_graph_1.pdf)
 
