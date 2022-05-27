@@ -27,7 +27,8 @@ This problem is easily reformulated as a MILP (Mixed-Integer-Linear-Program), we
 # Power simulation 
 
 
-We have $r=1,\ldots, 25$, $\operatorname{Poisson}(\mu_r)$, number of cases per each day-region to be loaded for notification. Each casefile itself has a $\operatorname{Poisson}(\mu_d)$ number of defendants. Hence, the number of `diligencias' per working day follows a compound Poisson distribution : $\sum^{\sum_{r} \operatorname{Poisson}(\mu_r)} \operatorname{Poisson}(\mu_d)$. 
+We have $r=1,\ldots, 25$, $\operatorname{Poisson}(\mu_r)$, number of cases per each day-region to be loaded for notification. Each casefile itself has a $\operatorname{Poisson}(\mu_d)$ number of defendants. Hence, the number of "diligencias" per working day follows a compound Poisson distribution : 
+$$\\sum^{\\sum_{r} \operatorname{Poisson}(\mu_r)} \operatorname{Poisson}(\mu_d)$$ 
 
 Casefiles are assigned randomly (with probability $p_{treat}$) within regions to the treatment arm. 
 
@@ -35,7 +36,7 @@ Baseline probability, $p_{baseline}$, of successful notification follows a $\ope
 
 Moreover, each casefile has associated a region $r$, which has a differential fixed effect of $\bar{\alpha_r}$, and a notifier $n$ which has a differential fixed effect of $\bar{\gamma_n}$. 
 
-Assignment to treatment (ATT) has a (random) treatment effect that is normally distributed $N(\mu_\beta,\sigma^2_{\beta})$. \\
+Assignment to treatment (ATT) has a (random) treatment effect that is normally distributed $N(\mu_\beta,\sigma^2_{\beta})$. 
 
 In sum, the model for the DGP is 
 
