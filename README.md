@@ -4,15 +4,13 @@
 
 The objective is to have a \emph{fair} division of 1255 zip-codes into 25 regions, with the property of being connected and disjoint. Our definition of a \emph{fair} division is one which achieves balance across regions in (i) number of notifications, (ii) number of addresses to be notified, and (iii) area covered. Heuristically, we proceed by joining together zip-codes while maintaining balance in the latter variables, and satisfying the constraints that such regions be connected and disjoint. Formally, we solve the following problem. 
 
-$$
-\begin{align}
+$$\begin{align}
     \min_{D_{kr}} \quad & \sum_{i>j} \left| Y_i-Y_j\right| \\
       \text{s.t} \;& \qquad Y_{r} =  \sum_{k}X_{k}D_{kr}\\;,  \qquad\\;\forall \\;r = 1,\ldots,25 \\
        & \qquad  1 = \sum_{r} D_{kr} \\;,  \qquad\\;\forall \\;k =1,\ldots, 1255 \\
        & \quad\\;  A_{ij} \geq D_{ir}D_{jr} \\;,  \qquad\\;\forall \\;i,j =1,\ldots, 1255 \\;,\\;\forall \\;r = 1,\ldots,25   \\
        & \qquad D_{kr} \in\{0,1\}
-\end{align}
-$$
+\end{align}$$
 
 where $k$ indexes a zip-code and $r$ indexes a region. $D_{kr}$ is a binary variable indicating whether zip-code $k$ belongs to region $r$. $X_{k}$ is an additive variable\footnote{In particular, we define it to be a weighted average of such variables for zip-code $k$ : 
 
