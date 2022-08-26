@@ -27,7 +27,7 @@ This problem is easily reformulated as a MILP (Mixed-Integer-Linear-Program), we
 # Power simulation 
 
 
-We have $r=1,..., 25$, $\text{Poisson}(\mu_r)$, number of cases per each day-region to be loaded for notification. Each casefile itself has a $\text{Poisson}(\mu_d)$ number of defendants. Hence, the number of "diligencias" per working day follows a compound Poisson distribution : 
+We have $r=1,\ldots, 25$, $\text{Poisson}(\mu_r)$, number of cases per each day-region to be loaded for notification. Each casefile itself has a $\text{Poisson}(\mu_d)$ number of defendants. Hence, the number of "diligencias" per working day follows a compound Poisson distribution : 
 
 $$\sum^{\sum_{r} \text{Poisson}(\mu_r)} \text{Poisson}(\mu_d)$$ 
 
